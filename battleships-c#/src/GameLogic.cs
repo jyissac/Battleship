@@ -1,26 +1,32 @@
-class GameLogic 
+
+using Microsoft.VisualBasic;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+//using System.Data;
+using System.Diagnostics;
+using SwinGameSDK;
+static class GameLogic
 {
-    // <summary> Main controller for game, handles game loop </summary>//
-
-	public static void Main() 
+	public static void Main()
 	{
-        // Opens a new Graphics Window
-        SwinGame.OpenGraphicsWindow("Battle Ships", 800, 600);
+		//Opens a new Graphics Window
+		SwinGame.OpenGraphicsWindow("Battle Ships", 800, 600);
 
-        // Load Resources
-        LoadResources();
-        SwinGame.PlayMusic(GameMusic("Background"));
+		//Load Resources
+		GameResources.LoadResources();
 
-        // Game Loop
-        for (; (((SwinGame.WindowCloseRequested() == true) || (CurrentState == GameState.Quitting))  == false); )
-		{
-            HandleUserInput();
-            DrawScreen();
-        }
-        
-        SwinGame.StopMusic();
-        
-		// Free Resources and Close Audio, to end the program.
-        FreeResources();
+		SwinGame.PlayMusic(GameResources.GameMusic("Background"));
+
+		//Game Loop
+		do {
+			GameController.HandleUserInput();
+			GameController.DrawScreen();
+		} while (!(SwinGame.WindowCloseRequested() == true | GameController.CurrentState == GameState.Quitting));
+
+		SwinGame.StopMusic();
+
+		//Free Resources and Close Audio, to end the program.
+		GameResources.FreeResources();
 	}
 }
