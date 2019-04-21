@@ -89,7 +89,7 @@ Module DeploymentController
 
         'Calculate the row/col clicked
         Dim row, col As Integer
-        row = Convert.ToInt32(Math.Floor((mouse.Y) / (CELL_HEIGHT + CELL_GAP)))
+        row = Convert.ToInt32(Math.Floor((mouse.Y -FIELD_TOP) / (CELL_HEIGHT + CELL_GAP)))
         col = Convert.ToInt32(Math.Floor((mouse.X - FIELD_LEFT) / (CELL_WIDTH + CELL_GAP)))
 
         If row >= 0 And row < HumanPlayer.PlayerGrid.Height Then
