@@ -312,15 +312,15 @@ public static class GameResources
 			SwinGame.FreeBitmap(obj);
 		}
 	}
-
+    
+    /*
 	private static void FreeSounds()
 	{
-        // Isuru: Memory Access Violation here
-        return;
 		foreach (SoundEffect obj in _Sounds.Values) {
-			Audio.FreeSoundEffect(obj);
+			//Audio.FreeSoundEffect(obj);
 		}
 	}
+    */
 
 	private static void FreeMusic()
 	{
@@ -334,8 +334,8 @@ public static class GameResources
 	{
 		FreeFonts();
 		FreeImages();
-		FreeMusic();
-		FreeSounds();
+		//FreeSounds();
+        FreeMusic();
 		SwinGame.ProcessEvents();
 	}
 }
