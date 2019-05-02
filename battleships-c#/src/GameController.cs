@@ -84,6 +84,7 @@ public static class GameController
 				break;
 			default:
 				_ai = new AIHardPlayer(_theGame);
+                
 				break;
 		}
 
